@@ -1,12 +1,16 @@
 var JFiles=[];
-var Skopje;
+var Skopje,Paris;
 loadData=function(){
 		// var skopje={}
 		var func=$.getJSON("SkopjePM10Averaged.json",function(data){
 		Skopje=data;
 		});
-		$.when(func).done(function () {
-    console.log(Skopje);
+			var func2=$.getJSON("ParisPM10Averaged.json",function(data){
+		Paris=data;
+		});
+		
+		$.when(func,func2).done(function () {
+    console.log(Paris);
 	
 	makeGraph()
 });
