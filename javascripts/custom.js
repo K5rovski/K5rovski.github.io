@@ -5,14 +5,14 @@
 		
 	for (var i=0;i<json.length;i++){
 		t=json[i];
-		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']);
+		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
 		if (t['Year'])
 		t['y']=t['Reading'];
 		}
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
               title:{
-                  text: "Basic Column Chart - CanvasJS"              
+                  text: "Skopje"              
              },
               data: [              
               {
