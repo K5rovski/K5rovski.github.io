@@ -1,7 +1,8 @@
  window.onload = function () {
  
-		var data=$.getJSON('params.json');
-		console.log(data)
+		$.getJSON("SkopjePM10Averaged.json", function(json) {
+
+		console.log(json)
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
               title:{
@@ -24,4 +25,5 @@
           });
 
           chart.render();
+		  });
       }
