@@ -3,7 +3,11 @@
 		$.getJSON("SkopjePM10Averaged.json",function(json){
 		console.log(json)
 		
-		
+		for (var i=0;i<json.length;i++){
+		t=json[i];
+		t['x']=new Date(t['Year'],t['Month'],t['Day'],t['Time']);
+		t['y']=t['Reading'];
+		}
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
               title:{
@@ -14,13 +18,7 @@
 // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
                   type: "line",
 				  markerType:"none",
-                  dataPoints: [
-                  {  y: 10 },
-                  {  y: 15 },
-                  { label: "banana", y: 25 },
-                  { label: "mango", y: 30 },
-                  { label: "grape", y: 28 }
-                  ]
+                  dataPoints: json;
               }
               ]
           });
