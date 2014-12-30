@@ -1,6 +1,6 @@
  window.onload = function () {
  
-		skopje=$.getJSON("SkopjePM10Averaged.json").responseJSON;
+		var skopje=$.getJSON("SkopjePM10Averaged.json").responseJSON;
 		console.log(skopje)
 		
 	for (var i=0;i<skopje.length;i++){
