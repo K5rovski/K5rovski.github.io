@@ -3,7 +3,7 @@
 		$.getJSON("SkopjePM10Averaged.json",function(json){
 		console.log(json)
 		
-	for (var i=0;i<json.length){
+	for (var i=0;i<json.length;i++){
 		t=json[i];
 		t['x']=new Date(t['Year'],t['Month'],t['Day'],t['Time']);
 		t['y']=t['Reading'];
