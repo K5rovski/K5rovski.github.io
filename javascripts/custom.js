@@ -3,8 +3,8 @@
 		skopje=$.getJSON("SkopjePM10Averaged.json").responseJSON;
 		console.log(skopje)
 		
-	for (var i=0;i<json.length;i++){
-		t=json[i];
+	for (var i=0;i<skopje.length;i++){
+		t=skopje[i];
 		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
 		if (t['Year'])
 		t['y']=t['Reading'];
