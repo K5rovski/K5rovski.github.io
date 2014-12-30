@@ -1,11 +1,17 @@
-var JFiles=[];
-var Skopje,Paris;
+var JFiles={};
+var Paris,Skopje;
 loadData=function(){
 		// var skopje={}
 		var func=$.getJSON("SkopjePM10Averaged.json",function(data){
+		var name=data[0].Station;
+		
+		JFiles[name.slice(0,name.search('_'))]=data;
 		Skopje=data;
 		});
 			var func2=$.getJSON("ParisPM10Averaged.json",function(data){
+		var name=data[0].Station;
+		
+		JFiles[name.slice(0,name.search('_'))]=data;
 		Paris=data;
 		});
 		
