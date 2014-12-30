@@ -1,6 +1,7 @@
  window.onload = function () {
  
 		var data=$.getJSON('params.json');
+		console.log(data)
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
               title:{
