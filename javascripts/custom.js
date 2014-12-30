@@ -11,6 +11,8 @@
 		}
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
+			   zoomEnabled: true,
+			panEnabled: true,
               title:{
                   text: "Skopje"              
              },
