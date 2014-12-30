@@ -3,7 +3,7 @@
 		$.getJSON("SkopjePM10Averaged.json",function(json){
 		console.log(json)
 		
-		for (var i=0;i<json.length;i++){
+	for (var i=0;i<json.length){
 		t=json[i];
 		t['x']=new Date(t['Year'],t['Month'],t['Day'],t['Time']);
 		t['y']=t['Reading'];
@@ -18,7 +18,7 @@
 // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
                   type: "line",
 				  markerType:"none",
-                  dataPoints: json;
+                  dataPoints: json
               }
               ]
           });
