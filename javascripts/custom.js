@@ -1,7 +1,7 @@
  window.onload = function () {
  
-		$.getJSON("SkopjePM10Averaged.json",function(json){
-		console.log(json)
+		skopje=$.getJSON("SkopjePM10Averaged.json").responseJSON;
+		console.log(skopje)
 		
 	for (var i=0;i<json.length;i++){
 		t=json[i];
@@ -21,11 +21,11 @@
 // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
                   type: "line",
 				  markerType:"none",
-                  dataPoints: json
+                  dataPoints: skopje
               }
               ]
           });
 
           chart.render();
-		  });
+		
       }
