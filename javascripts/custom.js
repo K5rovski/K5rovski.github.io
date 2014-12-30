@@ -5,7 +5,8 @@
 		
 	for (var i=0;i<json.length;i++){
 		t=json[i];
-		t['x']=new Date(t['Year'],t['Month'],t['Day'],t['Time']);
+		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']);
+		if (t['Year'])
 		t['y']=t['Reading'];
 		}
           var chart = new CanvasJS.Chart("chartContainer", {
