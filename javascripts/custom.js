@@ -1,9 +1,20 @@
- window.onload = function () {
- 
-		var func=$.getJSON("SkopjePM10Averaged.json");
-		var skopje=func.responseJSON
-		console.log(skopje)
+var JFiles=[];
+var Skopje;
+loadData=function(){
+		// var skopje={}
+		var func=$.getJSON("SkopjePM10Averaged.json",function(data){
+		Skopje=data;
+		});
+		$.when(func).done(function () {
+    console.log(Skopje);
+	
+	makeGraph()
+});
 		
+
+}
+makeGraph=function(){
+	var	skopje=Skopje;
 	for (var i=0;i<skopje.length;i++){
 		t=skopje[i];
 		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
@@ -28,5 +39,10 @@
           });
 
           chart.render();
+}
+ window.onload = function () {
+		loadData();
+		
+		
 		
       }
