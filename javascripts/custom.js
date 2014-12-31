@@ -6,7 +6,8 @@ loadData=function(){
 			var func2=$.getJSON("ParisPM10Averaged.json");
 		
 		$.when(func,func2).done(function (data1 , data2) {
-    
+    console.log(data1);
+	console.log(data2);
 	var name1=data1[0].Station;
 	JFiles[name1.slice(0,name1.search('_'))]=data1;
 	var name2=data2[0].Station;
