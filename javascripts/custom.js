@@ -1,30 +1,24 @@
 var JFiles={};
-var Paris,Skopje;
+
 loadData=function(){
 		// var skopje={}
-		var func=$.getJSON("SkopjePM10Averaged.json",function(data){
-		var name=data[0].Station;
+		var func=$.getJSON("SkopjePM10Averaged.json");
+			var func2=$.getJSON("ParisPM10Averaged.json");
 		
-		JFiles[name.slice(0,name.search('_'))]=data;
-		Skopje=data;
-		});
-			var func2=$.getJSON("ParisPM10Averaged.json",function(data){
-		var name=data[0].Station;
-		
-		JFiles[name.slice(0,name.search('_'))]=data;
-		Paris=data;
-		});
-		
-		$.when(func,func2).done(function () {
-    console.log(Paris);
-	
+		$.when(func,func2).done(function (data1 , data2) {
+    
+	var name1=data1[0].Station;
+	JFiles[name1.slice(0,name1.search('_'))]=data1;
+	var name2=data2[0].Station;
+	JFiles[name2.slice(0,name2.search('_'))]=data2;
+	console.log(JFiles.Paris);
 	makeGraph()
 });
 		
 
 }
 makeGraph=function(){
-	var	skopje=Skopje;
+	var	skopje=JFiles.Skopje;
 	for (var i=0;i<skopje.length;i++){
 		t=skopje[i];
 		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
