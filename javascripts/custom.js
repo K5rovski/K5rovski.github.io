@@ -31,18 +31,37 @@ makeGraph=function(){
 	
 	
 	$.each(JFiles,function(cityname,city){
+	// By JFile
+	// for (var i=0;i<city.length;i++){
+		// t=city[i];
+		// t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
+	//	if (t['Year'])   // Dont know about this
+		// t['y']=t['Reading'];
+		// }
+		var cityReadings=[];
+	var d=new Date(2013,0,1,0);	
+	for (var i=0;i<365*24;i++){
 	
-	for (var i=0;i<city.length;i++){
-		t=city[i];
-		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
-//		if (t['Year'])   // Dont know about this
-		t['y']=t['Reading'];
-		}
+	var citykey=[d.getYear(),d.getMonth()+1,
+	d.getDate(),d.getTime()+1
+	].join('_');
+	t=city[citykey];
+	var itemKey=new Date(d.getMilliseconds());
+	if (t!=null){
+	t['x']=itemKey
+	t['y']=t['Reading'];}
+	else {
+	t={'x':itemKey,'y':null};
+	}
+	cityReadings.push(t);
+	
+	d.setHours(d.getHours()+1);
+	}	
 		JDataList.push({type: "line",
 				  markerType:"none",
 				   showInLegend: true, 
-					name: cityname,
-                  dataPoints: city});
+					name: cityname+'\t',
+                  dataPoints: cityReadings});
 		});
 			 
           var chart = new CanvasJS.Chart("chartContainer", {
