@@ -49,7 +49,7 @@ makeGraph=function(){
 	var t;
 	t=city[citykey];
 	//console.log(citykey);
-	var itemKey=new Date(d.getMilliseconds());
+	var itemKey=new Date(d.getTime());
 	if (t!=null){
 	t['x']=itemKey
 	t['y']=t['Reading'];}
