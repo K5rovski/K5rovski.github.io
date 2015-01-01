@@ -14,7 +14,7 @@ loadData=function(){
 	var name;
 	for(var i=0;i<data.length;i++){
 	console.log(i);
-	 name=data[i].responseJSON[0].Station;
+	 name=data[i].responseJSON[10].Station;
 	
 	JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
 	}
