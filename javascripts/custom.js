@@ -58,6 +58,7 @@ makeGraph=function(){
 	
 	d.setHours(d.getHours()+1);
 	}	
+	console.log(cityReadings);
 		JDataList.push({type: "line",
 				  markerType:"none",
 				   showInLegend: true, 
