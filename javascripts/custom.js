@@ -1,25 +1,31 @@
 var JFiles={};
 var Names=['Skopje','Paris'];
 var Particle='PM10';
+		// JFiles.temp=data[0];
+	// console.log(data[0].responseJSON,data[1].responseJSONs);
+	
+	// for(var i=0;i<data.length;i++){
+	// console.log('ova e i ',i);
+	// var dataone=data[i].responseJSON;
+	// var name =dataone[10].Station;
+	 
+	 // console.log('data',data);
+	// JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
+	// }JSON
 loadData=function(){
 		// var skopje={}
-		var funcs=[]
+		var funcs=[];
 		for(var i=0;i<Names.length;i++){
-		funcs.push($.getJSON(Names[i]+Particle+'.json'));
+		funcs.push($.getJSON(Names[i]+Particle
+		+'.json',function(data){
+		var name=data[0].Station;
+		JFiles[name.slice(0,name.search('_'))]=data;
+	
+		}));
 		}
 			
-		$.when(funcs).then(function (data) {
-		JFiles.temp=data[0];
-	console.log(data[0].responseJSON,data[1].responseJSONs);
-	
-	for(var i=0;i<data.length;i++){
-	console.log('ova e i ',i);
-	var dataone=data[i].responseJSON;
-	var name =dataone[10].Station;
-	 
-	 console.log('data',data);
-	JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
-	}JSON
+		$.when(funcs).then(function () {
+
 	console.log(JFiles.Paris);
 	makeGraph()
 });
