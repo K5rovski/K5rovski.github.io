@@ -1,13 +1,16 @@
 var JFiles={};
-
+var Names=['Skopje','Paris'];
+var Particle='PM10';
 loadData=function(){
 		// var skopje={}
-		var func=$.getJSON("SkopjePM10Averaged.json");
-			var func2=$.getJSON("ParisPM10Averaged.json");
-		
-		$.when(func,func2).done(function (data1 , data2) {
+		var funcs=[]
+		for(var i=0;i<Names.length;i++){
+		funcs.push($.getJSON(Names[i]+Particle+'.json'));
+		}
+			
+		$.when(funcs...).done(function (data1) {
     console.log(data1);
-	console.log(data2);
+	//console.log(data2);
 	var name1=data1[0][0].Station;
 	JFiles[name1.slice(0,name1.search('_'))]=data1[0];
 	var name2=data2[0][0].Station;
