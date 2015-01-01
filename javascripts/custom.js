@@ -25,13 +25,17 @@ loadData=function(){
 
 }
 makeGraph=function(){
-	var	skopje=JFiles.Skopje;
-	for (var i=0;i<skopje.length;i++){
-		t=skopje[i];
+
+	$.each(JFiles,function(name,city){
+	
+	for (var i=0;i<city.length;i++){
+		t=city[i];
 		t['x']=new Date(t['Year'],t['Month']-1,t['Day'],t['Time']-1);
-		if (t['Year'])
+//		if (t['Year'])   // Dont know about this
 		t['y']=t['Reading'];
 		}
+		
+		});
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
