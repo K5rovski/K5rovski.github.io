@@ -26,8 +26,11 @@ loadData=function(){
 }
 makeGraph=function(){
 	var JDataList=[];
-	 var start = new Date().getTime();
-	$.each(JFiles,function(name,city){
+	
+	 var start = new Date().getTime(); //Time Start
+	
+	
+	$.each(JFiles,function(cityname,city){
 	
 	for (var i=0;i<city.length;i++){
 		t=city[i];
@@ -37,6 +40,8 @@ makeGraph=function(){
 		}
 		JDataList.push({type: "line",
 				  markerType:"none",
+				   showInLegend: true, 
+					name: cityname,
                   dataPoints: city});
 		});
 			 
@@ -52,10 +57,12 @@ makeGraph=function(){
 
           chart.render();
 	
+		// Time end
+		var end = new Date().getTime();
+		var time = end - start;
+	//	alert('Execution time: ' + time);
 
-var end = new Date().getTime();
-var time = end - start;
-alert('Execution time: ' + time);
+
 }
  window.onload = function () {
 		loadData();
