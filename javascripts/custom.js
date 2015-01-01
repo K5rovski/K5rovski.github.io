@@ -9,15 +9,16 @@ loadData=function(){
 		}
 			
 		$.when(funcs).done(function (data) {
-    console.log(data);
+   
 	//console.log(data2);
-	var name;
-	for(var i=0;i<data.length;i++){
-	console.log(i);
-	 name=data[i].responseJSON[10].Station;
 	
+	for(var i=0;i<data.length;i++){
+	console.log('ova e i ',i);
+	var name=data[i].responseJSON[10].Station;
+	 
+	 console.log('data',data);
 	JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
-	}
+	}JSON
 	console.log(JFiles.Paris);
 	makeGraph()
 });
