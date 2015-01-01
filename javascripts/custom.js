@@ -10,11 +10,12 @@ loadData=function(){
 			
 		$.when(funcs).done(function (data) {
    
-	//console.log(data2);
+	console.log(data);
 	
 	for(var i=0;i<data.length;i++){
 	console.log('ova e i ',i);
-	var name=data[i].responseJSON[10].Station;
+	var dataone=data[i].responseJSON;
+	var name =dataone[10].Station;
 	 
 	 console.log('data',data);
 	JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
