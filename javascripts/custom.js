@@ -42,7 +42,7 @@ makeGraph=function(){
 	var d=new Date(2013,0,1,0);	
 	for (var i=0;i<365*24;i++){
 	
-	var citykey=[d.getYear(),d.getMonth()+1,
+	var citykey=[d.getFullYear(),d.getMonth()+1,
 	d.getDate(),d.getHours()+1
 	].join('_');
 	var t;
