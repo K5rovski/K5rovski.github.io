@@ -7,8 +7,14 @@ loadData=function(){
 		for(var i=0;i<Names.length;i++){
 		funcs.push($.getJSON(Names[i]+Particle+'.json'));
 		}
-			
-		$.when(funcs[0],funcs[1]).done(function (data) {
+			// $.when.apply(null, urls.map(function (Name) {
+				// return $.getJSON(Names[i]+Particle+'.json');
+			// })).then(function () {
+			   // alert("hi");
+			// });
+			$.when.apply(null, Names.map(function (Name) {
+				return $.getJSON(Name+Particle+'.json');}
+				)).done(function (data) {
    
 	console.log(data);
 	
