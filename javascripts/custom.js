@@ -1,20 +1,26 @@
 var JFiles={};
-var chart;
+var Names=['Skopje','Paris'];
+var Particle='PM10';
 loadData=function(){
-		// var skopje={}
-		var func=$.getJSON("SkopjePM10Averaged.json");
-			var func2=$.getJSON("ParisPM10Averaged.json");
-		
-		$.when(func,func2).done(function (data1 , data2) {
-    console.log(data1);
-	console.log(data2);
-	var name1=data1[0][0].Station;
-	JFiles[name1.slice(0,name1.search('_'))]=data1[0];
-	var name2=data2[0][0].Station;
-	JFiles[name2.slice(0,name2.search('_'))]=data2[0];
-	console.log(JFiles.Paris);
-	makeGraph()
-});
+		 var funcs=[];
+		for(var i=0;i<Names.length;i++){
+		funcs.push($.getJSON(Names[i]+Particle+'.json'));
+		}
+	$.when.apply($, funcs).done(function(){
+    // This callback will be called with multiple arguments,
+    // one for each AJAX call
+    // Each argument is an array with the following structure: [data, statusText, jqXHR]
+
+    // Let's map the arguments into an object, for ease of use
+    
+    for(var i = 0, len = arguments.length; i < len; i++){
+		var name=arguments[i][0][0].Station;
+	JFiles[name.slice(0,name.search('_'))]=arguments[i][0];
+	  
+    }
+	
+	makeGraph();
+	});
 		
 
 }
@@ -26,7 +32,7 @@ makeGraph=function(){
 		if (t['Year'])
 		t['y']=t['Reading'];
 		}
-          chart = new CanvasJS.Chart("chartContainer", {
+          var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
 			panEnabled: true,
