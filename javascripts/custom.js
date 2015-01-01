@@ -1,6 +1,7 @@
 var JFiles={};
 var Names=['Skopje','Paris'];
 var Particle='PM10';
+	var JDataList=[];
 loadData=function(){
 		 var funcs=[];
 		for(var i=0;i<Names.length;i++){
@@ -25,7 +26,7 @@ loadData=function(){
 
 }
 makeGraph=function(){
-	var JDataList=[];
+
 	
 	 var start = new Date().getTime(); //Time Start
 	
