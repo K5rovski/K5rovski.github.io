@@ -1,31 +1,17 @@
 var JFiles={};
-var Names=['Skopje','Paris'];
-var Particle='PM10';
-		// JFiles.temp=data[0];
-	// console.log(data[0].responseJSON,data[1].responseJSONs);
-	
-	// for(var i=0;i<data.length;i++){
-	// console.log('ova e i ',i);
-	// var dataone=data[i].responseJSON;
-	// var name =dataone[10].Station;
-	 
-	 // console.log('data',data);
-	// JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
-	// }JSON
+var chart;
 loadData=function(){
 		// var skopje={}
-		var funcs=[];
-		for(var i=0;i<Names.length;i++){
-		funcs.push($.getJSON(Names[i]+Particle
-		+'.json',function(data){
-		var name=data[0].Station;
-		JFiles[name.slice(0,name.search('_'))]=data;
-	
-		}));
-		}
-			
-		$.when(funcs).then(function () {
-
+		var func=$.getJSON("SkopjePM10Averaged.json");
+			var func2=$.getJSON("ParisPM10Averaged.json");
+		
+		$.when(func,func2).done(function (data1 , data2) {
+    console.log(data1);
+	console.log(data2);
+	var name1=data1[0][0].Station;
+	JFiles[name1.slice(0,name1.search('_'))]=data1[0];
+	var name2=data2[0][0].Station;
+	JFiles[name2.slice(0,name2.search('_'))]=data2[0];
 	console.log(JFiles.Paris);
 	makeGraph()
 });
@@ -40,7 +26,7 @@ makeGraph=function(){
 		if (t['Year'])
 		t['y']=t['Reading'];
 		}
-          var chart = new CanvasJS.Chart("chartContainer", {
+          chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
 			panEnabled: true,
