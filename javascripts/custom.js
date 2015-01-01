@@ -25,7 +25,7 @@ loadData=function(){
 
 }
 makeGraph=function(){
-
+	var JDataList=[];
 	$.each(JFiles,function(name,city){
 	
 	for (var i=0;i<city.length;i++){
@@ -34,23 +34,18 @@ makeGraph=function(){
 //		if (t['Year'])   // Dont know about this
 		t['y']=t['Reading'];
 		}
-		
+		JDataList.push({type: "line",
+				  markerType:"none",
+                  dataPoints: city});
 		});
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
 			panEnabled: true,
               title:{
-                  text: "Skopje"              
+                  text: "Several Cities"              
              },
-              data: [              
-              {
-// Change type to "bar", "splineArea", "area", "spline", "pie",etc.
-                  type: "line",
-				  markerType:"none",
-                  dataPoints: skopje
-              }
-              ]
+              data: JDataList;
           });
 
           chart.render();
