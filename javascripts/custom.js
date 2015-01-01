@@ -64,7 +64,7 @@ makeGraph=function(){
 		JDataList.push({type: "line",
 				  markerType:"none",
 				   showInLegend: true, 
-					name: cityname+'\t',
+					name: cityname+' ',
                   dataPoints: cityReadings});
 		});
 			 
