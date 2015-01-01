@@ -45,7 +45,7 @@ makeGraph=function(){
               title:{
                   text: "Several Cities"              
              },
-              data: JDataList;
+              data: JDataList
           });
 
           chart.render();
