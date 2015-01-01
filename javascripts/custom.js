@@ -8,8 +8,8 @@ loadData=function(){
 		funcs.push($.getJSON(Names[i]+Particle+'.json'));
 		}
 			
-		$.when(funcs).done(function (data) {
-   
+		$.when(funcs).then(function (data) {
+		JFiles.temp=data[0];
 	console.log(data[0].responseJSON,data[1].responseJSONs);
 	
 	for(var i=0;i<data.length;i++){
