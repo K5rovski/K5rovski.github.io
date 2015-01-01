@@ -14,7 +14,7 @@ loadData=function(){
     // Let's map the arguments into an object, for ease of use
     
     for(var i = 0, len = arguments.length; i < len; i++){
-		var name=arguments[i][0][0].Station;
+		var name=arguments[i][0]['2013_1_22'].Station;
 	JFiles[name.slice(0,name.search('_'))]=arguments[i][0];
 	  
     }
@@ -45,6 +45,7 @@ makeGraph=function(){
 	var citykey=[d.getYear(),d.getMonth()+1,
 	d.getDate(),d.getTime()+1
 	].join('_');
+	var t;
 	t=city[citykey];
 	var itemKey=new Date(d.getMilliseconds());
 	if (t!=null){
