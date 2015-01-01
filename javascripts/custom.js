@@ -8,7 +8,7 @@ loadData=function(){
 		funcs.push($.getJSON(Names[i]+Particle+'.json'));
 		}
 			
-		$.when(funcs...).done(function (data1) {
+		$.when(funcs).done(function (data1) {
     console.log(data1);
 	//console.log(data2);
 	var name1=data1[0][0].Station;
