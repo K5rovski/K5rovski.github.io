@@ -43,11 +43,11 @@ makeGraph=function(){
 	for (var i=0;i<365*24;i++){
 	
 	var citykey=[d.getYear(),d.getMonth()+1,
-	d.getDate(),d.getTime()+1
+	d.getDate(),d.getHours()+1
 	].join('_');
 	var t;
 	t=city[citykey];
-	console.log(citykey);
+	// console.log(citykey);
 	var itemKey=new Date(d.getMilliseconds());
 	if (t!=null){
 	t['x']=itemKey
