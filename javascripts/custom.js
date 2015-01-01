@@ -10,7 +10,7 @@ loadData=function(){
 			
 		$.when(funcs).done(function (data) {
    
-	console.log(data[0],data[1]);
+	console.log(data[0].responseJSON,data[1].responseJSONs);
 	
 	for(var i=0;i<data.length;i++){
 	console.log('ova e i ',i);
