@@ -8,13 +8,15 @@ loadData=function(){
 		funcs.push($.getJSON(Names[i]+Particle+'.json'));
 		}
 			
-		$.when(funcs).done(function (data1) {
-    console.log(data1);
+		$.when(funcs).done(function (data) {
+    console.log(data);
 	//console.log(data2);
-	var name1=data1[0][0].Station;
-	JFiles[name1.slice(0,name1.search('_'))]=data1[0];
-	var name2=data2[0][0].Station;
-	JFiles[name2.slice(0,name2.search('_'))]=data2[0];
+	var name;
+	for(var i=0;i<data.length;i++){
+	 name=data[i].responseJSON[0].Station;
+	
+	JFiles[name.slice(0,name.search('_'))]=data[i].responseJSON;
+	}
 	console.log(JFiles.Paris);
 	makeGraph()
 });
