@@ -67,7 +67,7 @@ makeGraph=function(){
 					name: cityname+' ',
                   dataPoints: cityReadings});
 		});
-			 
+		var middle=new Date().getTime();
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
@@ -82,7 +82,10 @@ makeGraph=function(){
 	
 		// Time end
 		var end = new Date().getTime();
-		var time = end - start;
+		
+		$('#TimeSpent').text('Time loading data='+middle-start+
+		' mills. Time showing graph='+end-middle+' mils.');
+		
 	//	alert('Execution time: ' + time);
 
 
