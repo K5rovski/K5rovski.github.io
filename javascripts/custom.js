@@ -47,7 +47,7 @@ makeGraph=function(){
 	].join('_');
 	var t;
 	t=city[citykey];
-	console.log(citykey);
+	//console.log(citykey);
 	var itemKey=new Date(d.getMilliseconds());
 	if (t!=null){
 	t['x']=itemKey
