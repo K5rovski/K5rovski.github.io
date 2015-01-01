@@ -26,6 +26,7 @@ loadData=function(){
 }
 makeGraph=function(){
 	var JDataList=[];
+	 var start = new Date().getTime();
 	$.each(JFiles,function(name,city){
 	
 	for (var i=0;i<city.length;i++){
@@ -38,7 +39,7 @@ makeGraph=function(){
 				  markerType:"none",
                   dataPoints: city});
 		});
-			  var start = new Date().getTime();
+			 
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
