@@ -7,16 +7,10 @@ loadData=function(){
 		for(var i=0;i<Names.length;i++){
 		funcs.push($.getJSON(Names[i]+Particle+'.json'));
 		}
-			// $.when.apply(null, urls.map(function (Name) {
-				// return $.getJSON(Names[i]+Particle+'.json');
-			// })).then(function () {
-			   // alert("hi");
-			// });
-			$.when.apply(null, Names.map(function (Name) {
-				return $.getJSON(Name+Particle+'.json');}
-				)).done(function (data) {
+			
+		$.when(funcs).done(function (data) {
    
-	console.log(data);
+	console.log(data[0],data[1]);
 	
 	for(var i=0;i<data.length;i++){
 	console.log('ova e i ',i);
