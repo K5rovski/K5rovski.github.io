@@ -38,6 +38,7 @@ makeGraph=function(){
 				  markerType:"none",
                   dataPoints: city});
 		});
+			  var start = new Date().getTime();
           var chart = new CanvasJS.Chart("chartContainer", {
               theme: "theme2",//theme1
 			   zoomEnabled: true,
@@ -49,6 +50,11 @@ makeGraph=function(){
           });
 
           chart.render();
+	
+
+var end = new Date().getTime();
+var time = end - start;
+alert('Execution time: ' + time);
 }
  window.onload = function () {
 		loadData();
