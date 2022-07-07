@@ -21,7 +21,8 @@
 <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
 <link rel='stylesheet' href="style.css">
 <link rel='stylesheet' href="links.css">
-  
+  <link rel='stylesheet' href="links.css">
+
 <style>
 </style>
 
@@ -68,8 +69,8 @@ Combined Tabbed Content from previous pens
         <li id="select-2">
           <h3>Skywalker gand dexter</h3>
         </li>
-        <li id="select-3">
-          <h3>Lorth ortolan jeremoch</h3>
+        <li id="home-simul">
+          <h3>Home simulation</h3>
         </li>
         <li id="select-4">
           <h3>wookiee muun</h3>
@@ -217,9 +218,13 @@ Combined Tabbed Content from previous pens
       <!-- Tab Content 2 https://codepen.io/vinguerra/pen/rmwaao End -->
       
       <div class="tabs-content" id="content-select-3">
-             <iframe id="frame" src="frameinside.html" height="1200px" width="1200px" title="web stream">
-</iframe>
+           <!--   <iframe id="frame" src="frameinside.html" height="1200px" width="1200px" title="web stream">
+</iframe> -->
+<h1 class="link8" style="color:white;" align="center">
+    <a  href="https://singles-home-entropy-simulation.netlify.app/">Welcome home </a></h1>
 
+ <iframe   src="https://singles-home-entropy-simulation.netlify.app/" height="1200px" width="1200px" title="web stream">
+</iframe>
       </div>
 
       <div class="tabs-content" id="content-select-4">
@@ -254,6 +259,7 @@ Combined Tabbed Content from previous pens
 //Top Content Tabs and Description
 $(".tab-list li").on("click", function () {
   var tabId = ".tab-list li#" + $(this).attr("id");
+  const id = $(this).attr("id");
   var tabDivId = ".tabs-content#content-" + $(this).attr("id");
 
   if (!$(this).hasClass("active")) {
@@ -262,7 +268,8 @@ $(".tab-list li").on("click", function () {
 
     $(".tabs-content").removeClass("active");
     $(tabDivId).addClass("active");
-  }
+            window.location.hash = id;
+              }
 });
 //# sourceURL=pen.js
     </script>
