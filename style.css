@@ -21,11 +21,11 @@
   .tab-list > li:first-child {
     border-left: none;
   }
-  .tab-list > li:hover > h3,
-  .tab-list > li.active > h3 {
+  .tab-list > li:hover > h4,
+  .tab-list > li.active > h4 {
     color: #4ECDC4;
   }
-  .tab-list > li > h3 {
+  .tab-list > li > h4 {
     font-weight: 100;
     display: block;
     transition: all 500ms ease;
