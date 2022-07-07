@@ -65,7 +65,7 @@ Combined Tabbed Content from previous pens
     <!-- Tabs Sart -->
     <div class="container tabs">
       <ul class="list-inline tab-list col-md-12">
-        <li id="select-1" class="active" name="cato">
+        <li id="select-1"  name="cato">
           <h3>Dashade ryn cato</h3>
         </li>
         <li id="select-2" name="dexter">
@@ -258,24 +258,46 @@ Combined Tabbed Content from previous pens
 //     window.location.href = document.getElementById("frame").src;
 // }, true);
 
-//Top Content Tabs and Description
-$(".tab-list li").on("click", function (event) {
-      event.preventDefault();
-  var tabId = ".tab-list li#" + $(this).attr("id");
-  const name = $(this).attr("name");
-  var tabDivId = ".tabs-content#content-" + $(this).attr("id");
+const performMove = function(elem){
 
-  if (!$(this).hasClass("active")) {
+  var tabId = ".tab-list li#" + elem.attr("id");
+  const name = elem.attr("name");
+  var tabDivId = ".tabs-content#content-" + elem.attr("id");
+
+  if (!elem.hasClass("active")) {
     $(".tab-list li").removeClass("active");
-    $(this).addClass("active");
+    elem.addClass("active");
 
     $(".tabs-content").removeClass("active");
     $(tabDivId).addClass("active");
 
-       window.location.hash = name;
-    $($(this).attr('href')).fadeIn('slow');
+  }
+               window.location.hash = name;
+
+  
+}
+addEventListener("DOMContentLoaded", function() {
+    // Your code goes here
+  let name = window.location.hash.substring(1);
+  console.log(name);
+  if (!name){
+    name="dexter";
+  }
+const elem = $("li[name="+name+"]");
+console.log(elem)
+  performMove(elem);
+});
+
+//Top Content Tabs and Description
+$(".tab-list li").on("click", function (event) {
+      event.preventDefault();
+      const elem = $(this)
+      performMove(elem);
+             // window.location.hash = name;
+    $(elem.attr('href')).fadeIn('slow');
+
            // window.location.hash = id;
-              }
+              
 });
 //# sourceURL=pen.js
     </script>
