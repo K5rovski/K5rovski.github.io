@@ -97,7 +97,7 @@ class BasicWorldDemo {
     const near = 1.0;
     const far = 1000.0;
     this.camera_ = new THREE.PerspectiveCamera(fov, aspect, near, far);
-    this.camera_.position.set(75, 20, 0);
+    this.camera_.position.set(-166.78869589385005, 113.40166970055594, -460.33680066702607);
 
     this.scene_ = new THREE.Scene();
 
@@ -124,6 +124,10 @@ class BasicWorldDemo {
     const controls = new OrbitControls(
       this.camera_, this.threejs_.domElement);
     controls.target.set(0, 20, 0);
+controls.addEventListener( "change", event => {  
+    console.log( controls.object.position ); 
+} );
+
     controls.update();
 
     const loader = new THREE.CubeTextureLoader();
@@ -239,6 +243,18 @@ class BasicWorldDemo {
 
   spawn_() {
     const scale = Math.random() * 4 + 4;
+    const sphere = function(position) {
+
+     
+      
+    const bb =  new THREE.Mesh(
+            new THREE.SphereGeometry(4),
+            new THREE.MeshStandardMaterial({color: 0x808080}));
+          bb.position.set(position+(Math.random() * 2) - 1,200.0,((Math.random()- 0.5) *position)+(Math.random() * 2) - 1);
+          bb.castShadow = true;
+          bb.receiveShadow = true;
+    return bb;
+}
     const box = function(position) {
 
      
@@ -249,7 +265,7 @@ class BasicWorldDemo {
           color: 0x808080,
       }));
 
-    bb.position.set(position+(Math.random() * 2) - 1, 200.0, Math.random() * 2 - 1);
+    bb.position.set(position+(Math.random() * 2) - 1, 200.0, ((Math.random()- 0.5) *position)+(Math.random() * 2) - 1);
     bb.quaternion.set(0, 0, 0, 1);
     bb.castShadow = true;
     bb.receiveShadow = true;
@@ -258,7 +274,15 @@ class BasicWorldDemo {
 
   
     let rb;
-    for (let bb of [box(0),box(20 )]){
+    let obj_array = [box(0),box(20 ),sphere(-15),sphere(-30),box(0),box(20 ),
+    sphere(-15),sphere(-30),box(0),box(20 ),sphere(-15),sphere(-30),
+    box(0),box(20 ),sphere(-15),sphere(-30),box(0),box(20 ),sphere(-15),sphere(-30)];
+
+
+    obj_array.sort( () => .5 - Math.random() );
+    let slicee = parseInt((Math.random()/0.25)*4)
+
+    for (let bb of obj_array.slice(0,slicee)){
      rb = new RigidBody();
     rb.createBox(DEFAULT_MASS, bb.position, bb.quaternion, new THREE.Vector3(scale, scale, scale), null);
     rb.setRestitution(0.125);
@@ -275,11 +299,11 @@ class BasicWorldDemo {
 
 
 
-    this.physicsWorld_.addRigidBody(rb.body_);
+    // this.physicsWorld_.addRigidBody(rb.body_);
 
-    this.rigidBodies_.push({mesh: box, rigidBody: rb});
+    // this.rigidBodies_.push({mesh: box, rigidBody: rb});
 
-    this.scene_.add(box);
+    // this.scene_.add(box);
   }
 
   step_(timeElapsed) {
