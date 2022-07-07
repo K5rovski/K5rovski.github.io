@@ -65,16 +65,16 @@ Combined Tabbed Content from previous pens
     <!-- Tabs Sart -->
     <div class="container tabs">
       <ul class="list-inline tab-list col-md-12">
-        <li id="select-1" class="active">
+        <li id="select-1" class="active" name="cato">
           <h3>Dashade ryn cato</h3>
         </li>
-        <li id="select-2">
+        <li id="select-2" name="dexter">
           <h3>Skywalker gand dexter</h3>
         </li>
-        <li id="select-3">
+        <li id="select-3" name="home-simulation">
           <h3>Home simulation</h3>
         </li>
-        <li id="select-4">
+        <li id="select-4" name="wookie">
           <h3>wookiee muun</h3>
         </li>
       </ul>
@@ -259,9 +259,10 @@ Combined Tabbed Content from previous pens
 // }, true);
 
 //Top Content Tabs and Description
-$(".tab-list li").on("click", function () {
+$(".tab-list li").on("click", function (event) {
+      event.preventDefault();
   var tabId = ".tab-list li#" + $(this).attr("id");
-  const id = $(this).attr("id");
+  const name = $(this).attr("name");
   var tabDivId = ".tabs-content#content-" + $(this).attr("id");
 
   if (!$(this).hasClass("active")) {
@@ -270,6 +271,9 @@ $(".tab-list li").on("click", function () {
 
     $(".tabs-content").removeClass("active");
     $(tabDivId).addClass("active");
+
+       window.location.hash = name;
+    $($(this).attr('href')).fadeIn('slow');
            // window.location.hash = id;
               }
 });
